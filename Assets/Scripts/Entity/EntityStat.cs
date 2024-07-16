@@ -24,7 +24,7 @@ public class EntityStat
     {
         _main.Equipment = new EntityEquipment();
         _main.Equipment.Init(this);
-        Hp = 3;
+        Hp = 10;
         MaxHp = 10;
         if (EntityObject != null)
         {

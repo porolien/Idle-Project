@@ -1,8 +1,8 @@
-using System.Diagnostics;
 using System.Threading.Tasks;
 
 public class EntityIdleState : IBaseEntityState
 {
+    public IBaseEntityState NextEntityState;
     public Building BuildingJob;
     public bool NeedAwaitJob;
     private EntityStateMachine stateMachine;
@@ -40,7 +40,6 @@ public class EntityIdleState : IBaseEntityState
             await Task.Delay(BuildingJob.DurationJob);
         }
 
-
         OnCompleted();
     }
 
@@ -52,8 +51,17 @@ public class EntityIdleState : IBaseEntityState
 
     private void OnCompleted()
     {
-        stateMachine.DestinationState.Destination = stateMachine.Main.Choice.ChooseADestination();
-        stateMachine.Transition(stateMachine.DestinationState);
+        if (BuildingJob != null)
+        {
+            NextEntityState = BuildingJob.ReturnTheNextState(stateMachine);
+        }
+        
+        if (NextEntityState == stateMachine.DestinationState)
+        {
+            stateMachine.DestinationState.Destination = stateMachine.Main.Choice.ChooseADestination();
+        }
+
+        stateMachine.Transition(NextEntityState);
     }
 
 }

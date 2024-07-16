@@ -20,7 +20,10 @@ public class ExplorationBehavior : Behavior
     /// </summary>
     public override Vector3 Execute()
     {
+        entity.Main.StateMachine.ExploreState.ExploreMain = ManagerMain.Instance.Explores[0];
+        entity.Main.StateMachine.IdleState.NextEntityState = entity.Main.StateMachine.DestinationState;
         entity.NewDestination = buildingType;
+        entity.Main.StateMachine.IdleState.NeedAwaitJob = needAwait;
         return entity.GiveTheDestination();
     }
 }

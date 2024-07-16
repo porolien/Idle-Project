@@ -15,6 +15,11 @@ public class Building : MonoBehaviour
 
     }
 
+    public virtual IBaseEntityState ReturnTheNextState(EntityStateMachine _entity)
+    {
+        return _entity.DestinationState;
+    }
+
     protected virtual void Start()
     {
         

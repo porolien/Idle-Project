@@ -18,6 +18,7 @@ public class ReviveBehavior : Behavior
 
     public override Vector3 Execute()
     {
+        entity.Main.StateMachine.IdleState.NextEntityState = entity.Main.StateMachine.DestinationState;
         entity.NewDestination = buildingType;
         entity.Main.StateMachine.IdleState.NeedAwaitJob = needAwait;
         return entity.GiveTheDestination();

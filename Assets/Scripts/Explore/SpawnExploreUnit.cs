@@ -29,6 +29,9 @@ public class SpawnExploreUnit : MonoBehaviour
         main = _main;
     }
 
+    /// <summary>
+    /// Spawn les units en fonctions du max possible, ne va en faire spawn qu'un par un
+    /// </summary>
     public void SpawnUnit()
     {
         if (ExploreSpots.Count + Ennemies.Count < maxNumberOfUnits)

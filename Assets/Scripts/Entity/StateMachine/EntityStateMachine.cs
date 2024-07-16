@@ -23,6 +23,7 @@ public class EntityStateMachine : MonoBehaviour
 
     private void Start()
     {
+        IdleState.NextEntityState = DestinationState;
         Transition(IdleState);
     }
 
