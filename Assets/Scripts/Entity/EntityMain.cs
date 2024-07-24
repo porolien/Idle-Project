@@ -9,6 +9,7 @@ public class EntityMain : MonoBehaviour
     public EntityChoice Choice;
     public EntityInfo Info;
     public EntityStateMachine StateMachine;
+    public Team OwnTeam;
 
     private void Awake()
     {

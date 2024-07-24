@@ -11,6 +11,8 @@ public class ManagerMain : MonoBehaviour
     public BuildingManager Building;
     public List<ExploreMain> Explores;
 
+    public BattleManager Battle;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)

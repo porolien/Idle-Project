@@ -23,7 +23,7 @@ public class EntityExploreState : IBaseEntityState
     {
         if (stateMachine.Main.Movement.IsObjectifReached())
         {
-            unitToGo.GetComponent<ExploreUnit>().UnitEffect();
+            unitToGo.GetComponent<ExploreUnit>().UnitEffect(stateMachine.Main.OwnTeam);
         }
         else
         {

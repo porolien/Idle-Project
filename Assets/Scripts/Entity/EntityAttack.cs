@@ -12,10 +12,20 @@ public class EntityAttack : MonoBehaviour
         main = _main;
         _main.Attack = this;
     }
+
+    public void InitBattle()
+    {
+        if (Target == null)
+        {
+            Target = main.OwnTeam.ActualBattle.SearchTheClosestEnnemy(gameObject, main.OwnTeam.ActualBattle.GetOtherTeam(main.OwnTeam));
+        }
+    }
+
     /// <summary>
     /// Fais attention à la range de l'entité ainsi qu'a sa vitesse d'attaque,
     /// lancera AttackMove si toutes les conditions bonnes
     /// </summary>
+    /// 
     private void FixedUpdate()
     {
         if (attackCooldown > 0)
